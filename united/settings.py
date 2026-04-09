@@ -40,6 +40,7 @@ AUTH_USER_MODEL = 'store.User'
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -52,6 +53,18 @@ INSTALLED_APPS = [
     'cloudinary',
     'cloudinary_storage',
 ]
+
+JAZZMIN_SETTINGS = {
+    "site_title": "USN Admin",
+    "site_header": "United Sports Nutrition",
+    "site_brand": "USN Dashboard",
+    "welcome_sign": "Welcome to USN Admin",
+    "copyright": "USN Pvt Ltd",
+
+    "topmenu_links": [
+        {"name": "Home", "url": "/", "permissions": ["auth.view_user"]},
+    ],
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
