@@ -3,6 +3,7 @@ from django.db import models
 from django.conf import settings
 from django.utils.text import slugify
 from django_ckeditor_5.fields import CKEditor5Field
+from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import AbstractUser
 
 
@@ -19,7 +20,7 @@ class User(AbstractUser):
 class Category(models.Model):
     name = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(unique=True, blank=True)
-    image = models.ImageField(upload_to='categories/', blank=True, null=True)
+    image = CloudinaryField('Category image', blank=True, default=None)
     is_active = models.BooleanField(default=True)
 
     class Meta:
@@ -58,7 +59,7 @@ class Product(models.Model):
 
     stock = models.PositiveIntegerField(default=0)
 
-    image = models.ImageField(upload_to='products/')
+    image = CloudinaryField('Product image', blank=True, default=None)
     
     is_available = models.BooleanField(default=True)
 
@@ -186,7 +187,7 @@ class OrderItem(models.Model):
 class Gallery(models.Model):
     title = models.CharField(max_length=255, blank=True, null=True)
     
-    image = models.ImageField(upload_to='gallery/')
+    image = CloudinaryField('Gallery image', blank=True, default=None)
     
     is_active = models.BooleanField(default=True)
 
